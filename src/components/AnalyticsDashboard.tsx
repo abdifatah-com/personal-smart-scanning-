@@ -86,7 +86,7 @@ export default function AnalyticsDashboard() {
         .slice(0, 5);
 
       // Monthly stats
-      const monthlyStats = filteredScans.reduce((acc, scan) => {
+      const monthlyCounts: Record<string, number> = filteredScans.reduce((acc, scan) => {
         const month = new Date(scan.created_at).toLocaleDateString('en-US', { 
           month: 'short', 
           year: 'numeric' 
@@ -95,8 +95,9 @@ export default function AnalyticsDashboard() {
         return acc;
       }, {} as Record<string, number>);
 
-      const monthlyStatsArray = Object.entries(monthlyStats)
-        .map(([month, count]) => ({ month, count }))
+      // Use Object.keys to avoid entries' possible any/unknown in older TS lib
+      const monthlyStatsArray: Array<{ month: string; count: number }> = Object.keys(monthlyCounts)
+        .map((month) => ({ month, count: monthlyCounts[month] }))
         .sort((a, b) => new Date(a.month).getTime() - new Date(b.month).getTime());
 
       setAnalytics({
