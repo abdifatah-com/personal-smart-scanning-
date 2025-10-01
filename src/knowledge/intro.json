@@ -1,0 +1,6 @@
+[
+  {"q":"hi","a":"Hi! How can I help with scanning or managing your items today?","tags":["greeting"]},
+  {"q":"hello","a":"Hello! Need help scanning food, medicines, cosmetics, or tree leaves?","tags":["greeting"]},
+  {"q":"who are you","a":"I'm your Smart Scanning & Verification Assistant for this app.","tags":["about","assistant"]},
+  {"q":"what can you do","a":"I can guide you to scan items, understand expiry, and manage your history and alerts.","tags":["about"]}
+]

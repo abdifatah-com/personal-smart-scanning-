@@ -1,0 +1,6 @@
+[
+  {"q":"how do i scan a medicine","a":"From Home, tap 'Scan a Medicine' and point your camera at the barcode.","tags":["medicine","scan"]},
+  {"q":"how do i scan a food","a":"Tap 'Scan a Food' then scan the barcode. You can also upload a barcode image.","tags":["food","scan"]},
+  {"q":"how do i scan a cosmetic","a":"Tap 'Scan a Cosmetic' and scan the barcode to check details and dates.","tags":["cosmetic","scan"]},
+  {"q":"how do i scan a leaf","a":"Choose 'Scan a Leaf' and capture a clear photo of the leaf for analysis.","tags":["tree","leaf","scan"]}
+]

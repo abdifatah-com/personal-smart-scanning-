@@ -1,0 +1,5 @@
+[
+  {"q":"what are the plan limits","a":"Basic: 10 scans/day. Premium: 50 scans/day + OCR + analytics + export + alerts. Advanced: unlimited scans and full features.","tags":["plans","limits"]},
+  {"q":"how do i change plan","a":"Open Plans tab and select Premium or Advanced.","tags":["plans","upgrade"]},
+  {"q":"how do alerts work","a":"On Premium/Advanced we track expiry dates and surface reminders.","tags":["alerts","expiry"]}
+]
