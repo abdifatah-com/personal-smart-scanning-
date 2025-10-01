@@ -45,7 +45,9 @@ export async function GET(request: NextRequest) {
       ? 'image/jpeg' 
       : 'image/png';
 
-    return new NextResponse(imageBuffer, {
+    // NextResponse in the edge/runtime expects web types (Blob/ArrayBuffer), not Node Buffer
+    const blob = new Blob([imageBuffer], { type: contentType });
+    return new NextResponse(blob, {
       headers: {
         'Content-Type': contentType,
         'Cache-Control': 'public, max-age=31536000', // Cache for 1 year
