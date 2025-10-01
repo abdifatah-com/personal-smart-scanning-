@@ -73,15 +73,15 @@ export default function AnalyticsDashboard() {
       const recentScans = filteredScans.slice(0, 5);
 
       // Top brands
-      const brandCounts = filteredScans
+      const brandCounts: Record<string, number> = filteredScans
         .filter(s => s.brand)
         .reduce((acc, scan) => {
           acc[scan.brand!] = (acc[scan.brand!] || 0) + 1;
           return acc;
         }, {} as Record<string, number>);
 
-      const topBrands = Object.entries(brandCounts)
-        .map(([brand, count]) => ({ brand, count }))
+      const topBrands: Array<{ brand: string; count: number }> = Object.entries(brandCounts)
+        .map(([brand, count]) => ({ brand, count: Number(count) }))
         .sort((a, b) => b.count - a.count)
         .slice(0, 5);
 
