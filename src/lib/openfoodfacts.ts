@@ -3,6 +3,13 @@
 
 import { request } from 'undici'
 
+// Shape of the Open Food Facts v2 product lookup response
+interface OpenFoodFactsProductResponse {
+  status: number; // 1 when found, 0 when not found
+  status_verbose?: string;
+  product?: Record<string, unknown>;
+}
+
 export type OpenFoodFactsNutriments = {
   energyKcal?: number | null
   fat?: number | null
@@ -48,14 +55,14 @@ export async function fetchOpenFoodFactsProduct(barcode: string): Promise<Produc
     if (statusCode >= 500) {
       return { ok: false, error: 'Service unavailable' }
     }
-    const json = await body.json()
+    const json = (await body.json()) as OpenFoodFactsProductResponse
     if (!json || typeof json !== 'object') {
       return { ok: false, error: 'Invalid response' }
     }
     if (json.status === 0) {
       return { ok: false, notFound: true }
     }
-    const product = json.product || {}
+    const product = (json.product || {}) as Record<string, any>
     const ui: ProductUIModel = {
       barcode: sanitized,
       productName: nullableString(product.product_name) ?? null,
