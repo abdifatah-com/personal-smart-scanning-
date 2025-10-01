@@ -45,8 +45,9 @@ export async function GET(request: NextRequest) {
       ? 'image/jpeg' 
       : 'image/png';
 
-    // NextResponse in the edge/runtime expects web types (Blob/ArrayBuffer), not Node Buffer
-    const blob = new Blob([imageBuffer], { type: contentType });
+    // NextResponse expects web types (Blob/ArrayBuffer). Convert Node Buffer → ArrayBuffer
+    const uint8 = new Uint8Array(imageBuffer);
+    const blob = new Blob([uint8.buffer], { type: contentType });
     return new NextResponse(blob, {
       headers: {
         'Content-Type': contentType,
